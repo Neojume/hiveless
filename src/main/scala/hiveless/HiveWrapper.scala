@@ -11,6 +11,7 @@ import shapeless.labelled.{FieldType, field}
 
 import scala.collection.JavaConverters._
 
+@annotation.implicitNotFound(msg = "Could not find a HiveWrapper for ${A}")
 trait HiveWrapper[A] {
   def getInspector: ObjectInspector
   def verifyInspector(oi: ObjectInspector): Unit
@@ -18,6 +19,7 @@ trait HiveWrapper[A] {
   def fromObject(obj: Object): A
 }
 
+@annotation.implicitNotFound(msg = "Could not find a HiveStructWrapper for ${A}")
 trait HiveStructWrapper[A] extends HiveWrapper[A] {
   def getInspector: StructObjectInspector
   def getFieldInspectors: Map[String, ObjectInspector]

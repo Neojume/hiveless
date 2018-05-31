@@ -29,19 +29,17 @@ trait HiveStructWrapper[A] extends HiveWrapper[A] {
 object HiveWrapper {
 
   implicit val intWrapper: HiveWrapper[Int] = new HiveWrapper[Int] {
-    override def getInspector: PrimitiveObjectInspector = PrimitiveObjectInspectorFactory.javaIntObjectInspector//InspectorLookup.lookup[Int]
+    override def getInspector: PrimitiveObjectInspector = PrimitiveObjectInspectorFactory.javaIntObjectInspector
 
     override def fromObject(obj: Object): Int = {
-//      getInspector.getPrimitiveWritableObject(obj).asInstanceOf[IntWritable].get
       obj match {
         case lzy : LazyInteger => lzy.getWritableObject.asInstanceOf[IntWritable].get
         case i : Integer => i
-        case x => throw new UDFArgumentException(s"Dont know what to do with: $x")
+        case x => throw new UDFArgumentException(s"Cannot convert $x into an integer")
       }
     }
 
     override def verifyInspector(oi: ObjectInspector): Unit = oi match {
-      //case poi: PrimitiveObjectInspector => InspectorLookup.add[Int](poi)
       case ioi: IntObjectInspector => InspectorLookup.add[Int](ioi)
       case x => throw new UDFArgumentException(s"Expected primitive inspector for int, but found $x")
     }

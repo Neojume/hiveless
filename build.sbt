@@ -1,4 +1,4 @@
-name := "raf-udf-framwork"
+name := "hiveless"
 
 version := "0.1.1"
 

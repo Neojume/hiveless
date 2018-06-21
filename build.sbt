@@ -42,7 +42,7 @@ lazy val commonSettings = Seq(
 
 lazy val publishSettings = Seq(
   publishArtifact in Test := false,
-  bintrayRepository := "mvn",
+  bintrayRepository := "neojume",
   pomIncludeRepository :=  { _ => false },
   licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
   pomExtra in Global := {

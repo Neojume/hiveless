@@ -1,2 +1,4 @@
 # hiveless
-Hive UDF framework for Scala 
+Hive UDFs made easy
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3553609f1b054121a9be8ea102353d66)](https://www.codacy.com/app/Neojume/hiveless?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Neojume/hiveless&amp;utm_campaign=Badge_Grade)

@@ -22,7 +22,6 @@ abstract class ScalaUDF[Input, Output](
       case _ if arguments.length == 1 => inputWrapper.verifyInspector(arguments.head)
       case _ => throw new UDFArgumentException("Unrecognized input shape")
     }
-
     outputWrapper.getInspector
   }
 

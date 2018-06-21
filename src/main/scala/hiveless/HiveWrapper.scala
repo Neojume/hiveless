@@ -36,8 +36,9 @@ object HiveWrapper {
     override def fromObject(obj: Object): Int = {
       obj match {
         case lzy : LazyInteger => lzy.getWritableObject.asInstanceOf[IntWritable].get
+        case iw : IntWritable => iw.get
         case i : Integer => i
-        case x => throw new UDFArgumentException(s"Cannot convert $x into an integer")
+        case x => throw new UDFArgumentException(s"Cannot convert $x of type ${x.getClass} into an integer")
       }
     }
 
